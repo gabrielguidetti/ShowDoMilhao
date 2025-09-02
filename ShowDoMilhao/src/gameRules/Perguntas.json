@@ -1,0 +1,1718 @@
+[
+   {
+      "pergunta":"Qual é a capital do Brasil?",
+      "nivel":1,
+      "respostas":[
+         {
+            "texto":"Brasília",
+            "correta":true
+         },
+         {
+            "texto":"São Paulo",
+            "correta":false
+         },
+         {
+            "texto":"Rio de Janeiro",
+            "correta":false
+         },
+         {
+            "texto":"Belo Horizonte",
+            "correta":false
+         }
+      ]
+   },
+   {
+      "pergunta":"Quanto é 2 + 2?",
+      "nivel":1,
+      "respostas":[
+         {
+            "texto":"4",
+            "correta":true
+         },
+         {
+            "texto":"3",
+            "correta":false
+         },
+         {
+            "texto":"5",
+            "correta":false
+         },
+         {
+            "texto":"22",
+            "correta":false
+         }
+      ]
+   },
+   {
+      "pergunta":"Qual é o maior mamífero terrestre?",
+      "nivel":1,
+      "respostas":[
+         {
+            "texto":"Elefante africano",
+            "correta":true
+         },
+         {
+            "texto":"Rinoceronte",
+            "correta":false
+         },
+         {
+            "texto":"Girafa",
+            "correta":false
+         },
+         {
+            "texto":"Hipopótamo",
+            "correta":false
+         }
+      ]
+   },
+   {
+      "pergunta":"Em qual continente fica o Egito?",
+      "nivel":1,
+      "respostas":[
+         {
+            "texto":"África",
+            "correta":true
+         },
+         {
+            "texto":"Ásia",
+            "correta":false
+         },
+         {
+            "texto":"Europa",
+            "correta":false
+         },
+         {
+            "texto":"América do Sul",
+            "correta":false
+         }
+      ]
+   },
+   {
+      "pergunta":"Qual é a cor da banana madura?",
+      "nivel":1,
+      "respostas":[
+         {
+            "texto":"Amarela",
+            "correta":true
+         },
+         {
+            "texto":"Verde",
+            "correta":false
+         },
+         {
+            "texto":"Vermelha",
+            "correta":false
+         },
+         {
+            "texto":"Azul",
+            "correta":false
+         }
+      ]
+   },
+   {
+      "pergunta":"Qual é o plural de 'cão'?",
+      "nivel":1,
+      "respostas":[
+         {
+            "texto":"Cães",
+            "correta":true
+         },
+         {
+            "texto":"Cãos",
+            "correta":false
+         },
+         {
+            "texto":"Cãoses",
+            "correta":false
+         },
+         {
+            "texto":"Cãezes",
+            "correta":false
+         }
+      ]
+   },
+   {
+      "pergunta":"Quantos lados tem um quadrado?",
+      "nivel":1,
+      "respostas":[
+         {
+            "texto":"4",
+            "correta":true
+         },
+         {
+            "texto":"3",
+            "correta":false
+         },
+         {
+            "texto":"5",
+            "correta":false
+         },
+         {
+            "texto":"6",
+            "correta":false
+         }
+      ]
+   },
+   {
+      "pergunta":"Qual é o animal conhecido como 'rei da selva'?",
+      "nivel":1,
+      "respostas":[
+         {
+            "texto":"Leão",
+            "correta":true
+         },
+         {
+            "texto":"Tigre",
+            "correta":false
+         },
+         {
+            "texto":"Onça",
+            "correta":false
+         },
+         {
+            "texto":"Elefante",
+            "correta":false
+         }
+      ]
+   },
+   {
+      "pergunta":"Qual é a estação mais fria do ano?",
+      "nivel":1,
+      "respostas":[
+         {
+            "texto":"Inverno",
+            "correta":true
+         },
+         {
+            "texto":"Verão",
+            "correta":false
+         },
+         {
+            "texto":"Primavera",
+            "correta":false
+         },
+         {
+            "texto":"Outono",
+            "correta":false
+         }
+      ]
+   },
+   {
+      "pergunta":"Qual planeta é conhecido como planeta vermelho?",
+      "nivel":1,
+      "respostas":[
+         {
+            "texto":"Marte",
+            "correta":true
+         },
+         {
+            "texto":"Júpiter",
+            "correta":false
+         },
+         {
+            "texto":"Saturno",
+            "correta":false
+         },
+         {
+            "texto":"Vênus",
+            "correta":false
+         }
+      ]
+   },
+   {
+      "pergunta":"Quem pintou a Mona Lisa?",
+      "nivel":2,
+      "respostas":[
+         {
+            "texto":"Leonardo da Vinci",
+            "correta":true
+         },
+         {
+            "texto":"Michelangelo",
+            "correta":false
+         },
+         {
+            "texto":"Van Gogh",
+            "correta":false
+         },
+         {
+            "texto":"Picasso",
+            "correta":false
+         }
+      ]
+   },
+   {
+      "pergunta":"Quantos estados tem o Brasil?",
+      "nivel":2,
+      "respostas":[
+         {
+            "texto":"26",
+            "correta":true
+         },
+         {
+            "texto":"27",
+            "correta":false
+         },
+         {
+            "texto":"25",
+            "correta":false
+         },
+         {
+            "texto":"28",
+            "correta":false
+         }
+      ]
+   },
+   {
+      "pergunta":"Quem descobriu o Brasil em 1500?",
+      "nivel":2,
+      "respostas":[
+         {
+            "texto":"Pedro Álvares Cabral",
+            "correta":true
+         },
+         {
+            "texto":"Cristóvão Colombo",
+            "correta":false
+         },
+         {
+            "texto":"Vasco da Gama",
+            "correta":false
+         },
+         {
+            "texto":"Fernão de Magalhães",
+            "correta":false
+         }
+      ]
+   },
+   {
+      "pergunta":"Qual é o maior planeta do sistema solar?",
+      "nivel":2,
+      "respostas":[
+         {
+            "texto":"Júpiter",
+            "correta":true
+         },
+         {
+            "texto":"Saturno",
+            "correta":false
+         },
+         {
+            "texto":"Netuno",
+            "correta":false
+         },
+         {
+            "texto":"Urano",
+            "correta":false
+         }
+      ]
+   },
+   {
+      "pergunta":"Qual é o idioma oficial da Argentina?",
+      "nivel":2,
+      "respostas":[
+         {
+            "texto":"Espanhol",
+            "correta":true
+         },
+         {
+            "texto":"Português",
+            "correta":false
+         },
+         {
+            "texto":"Inglês",
+            "correta":false
+         },
+         {
+            "texto":"Francês",
+            "correta":false
+         }
+      ]
+   },
+   {
+      "pergunta":"Quantos segundos há em 1 minuto?",
+      "nivel":2,
+      "respostas":[
+         {
+            "texto":"60",
+            "correta":true
+         },
+         {
+            "texto":"100",
+            "correta":false
+         },
+         {
+            "texto":"120",
+            "correta":false
+         },
+         {
+            "texto":"80",
+            "correta":false
+         }
+      ]
+   },
+   {
+      "pergunta":"Qual é a montanha mais alta do mundo?",
+      "nivel":2,
+      "respostas":[
+         {
+            "texto":"Monte Everest",
+            "correta":true
+         },
+         {
+            "texto":"Monte Fuji",
+            "correta":false
+         },
+         {
+            "texto":"K2",
+            "correta":false
+         },
+         {
+            "texto":"Aconcágua",
+            "correta":false
+         }
+      ]
+   },
+   {
+      "pergunta":"Qual é o metal líquido à temperatura ambiente?",
+      "nivel":2,
+      "respostas":[
+         {
+            "texto":"Mercúrio",
+            "correta":true
+         },
+         {
+            "texto":"Ferro",
+            "correta":false
+         },
+         {
+            "texto":"Chumbo",
+            "correta":false
+         },
+         {
+            "texto":"Alumínio",
+            "correta":false
+         }
+      ]
+   },
+   {
+      "pergunta":"Quantos continentes existem no planeta Terra?",
+      "nivel":2,
+      "respostas":[
+         {
+            "texto":"6",
+            "correta":false
+         },
+         {
+            "texto":"7",
+            "correta":true
+         },
+         {
+            "texto":"5",
+            "correta":false
+         },
+         {
+            "texto":"8",
+            "correta":false
+         }
+      ]
+   },
+   {
+      "pergunta":"Qual é a capital da França?",
+      "nivel":2,
+      "respostas":[
+         {
+            "texto":"Paris",
+            "correta":true
+         },
+         {
+            "texto":"Londres",
+            "correta":false
+         },
+         {
+            "texto":"Berlim",
+            "correta":false
+         },
+         {
+            "texto":"Madri",
+            "correta":false
+         }
+      ]
+   },
+   {
+      "pergunta":"Quem foi o primeiro presidente do Brasil?",
+      "nivel":3,
+      "respostas":[
+         {
+            "texto":"Deodoro da Fonseca",
+            "correta":true
+         },
+         {
+            "texto":"Getúlio Vargas",
+            "correta":false
+         },
+         {
+            "texto":"Marechal Floriano",
+            "correta":false
+         },
+         {
+            "texto":"Dom Pedro II",
+            "correta":false
+         }
+      ]
+   },
+   {
+      "pergunta":"Qual elemento químico tem o símbolo 'O'?",
+      "nivel":3,
+      "respostas":[
+         {
+            "texto":"Oxigênio",
+            "correta":true
+         },
+         {
+            "texto":"Ouro",
+            "correta":false
+         },
+         {
+            "texto":"Ósmio",
+            "correta":false
+         },
+         {
+            "texto":"Óxido",
+            "correta":false
+         }
+      ]
+   },
+   {
+      "pergunta":"Em que ano ocorreu a Independência do Brasil?",
+      "nivel":3,
+      "respostas":[
+         {
+            "texto":"1822",
+            "correta":true
+         },
+         {
+            "texto":"1889",
+            "correta":false
+         },
+         {
+            "texto":"1500",
+            "correta":false
+         },
+         {
+            "texto":"1808",
+            "correta":false
+         }
+      ]
+   },
+   {
+      "pergunta":"Quem escreveu 'Dom Casmurro'?",
+      "nivel":3,
+      "respostas":[
+         {
+            "texto":"Machado de Assis",
+            "correta":true
+         },
+         {
+            "texto":"José de Alencar",
+            "correta":false
+         },
+         {
+            "texto":"Monteiro Lobato",
+            "correta":false
+         },
+         {
+            "texto":"Carlos Drummond",
+            "correta":false
+         }
+      ]
+   },
+   {
+      "pergunta":"Qual é o país mais populoso do mundo em 2023?",
+      "nivel":3,
+      "respostas":[
+         {
+            "texto":"Índia",
+            "correta":true
+         },
+         {
+            "texto":"China",
+            "correta":false
+         },
+         {
+            "texto":"Estados Unidos",
+            "correta":false
+         },
+         {
+            "texto":"Indonésia",
+            "correta":false
+         }
+      ]
+   },
+   {
+      "pergunta":"Quantos ossos tem o corpo humano adulto?",
+      "nivel":3,
+      "respostas":[
+         {
+            "texto":"206",
+            "correta":true
+         },
+         {
+            "texto":"210",
+            "correta":false
+         },
+         {
+            "texto":"200",
+            "correta":false
+         },
+         {
+            "texto":"215",
+            "correta":false
+         }
+      ]
+   },
+   {
+      "pergunta":"Qual é o maior oceano do mundo?",
+      "nivel":3,
+      "respostas":[
+         {
+            "texto":"Oceano Pacífico",
+            "correta":true
+         },
+         {
+            "texto":"Oceano Atlântico",
+            "correta":false
+         },
+         {
+            "texto":"Oceano Índico",
+            "correta":false
+         },
+         {
+            "texto":"Oceano Ártico",
+            "correta":false
+         }
+      ]
+   },
+   {
+      "pergunta":"Quem é o autor de 'A Divina Comédia'?",
+      "nivel":3,
+      "respostas":[
+         {
+            "texto":"Dante Alighieri",
+            "correta":true
+         },
+         {
+            "texto":"Homero",
+            "correta":false
+         },
+         {
+            "texto":"Virgílio",
+            "correta":false
+         },
+         {
+            "texto":"Petrarca",
+            "correta":false
+         }
+      ]
+   },
+   {
+      "pergunta":"Quem desenvolveu a teoria da relatividade?",
+      "nivel":3,
+      "respostas":[
+         {
+            "texto":"Albert Einstein",
+            "correta":true
+         },
+         {
+            "texto":"Isaac Newton",
+            "correta":false
+         },
+         {
+            "texto":"Galileu Galilei",
+            "correta":false
+         },
+         {
+            "texto":"Nikola Tesla",
+            "correta":false
+         }
+      ]
+   },
+   {
+      "pergunta":"Em que país se localiza Machu Picchu?",
+      "nivel":3,
+      "respostas":[
+         {
+            "texto":"Peru",
+            "correta":true
+         },
+         {
+            "texto":"Chile",
+            "correta":false
+         },
+         {
+            "texto":"México",
+            "correta":false
+         },
+         {
+            "texto":"Bolívia",
+            "correta":false
+         }
+      ]
+   },
+   {
+      "pergunta":"Qual é a fórmula química da água?",
+      "nivel":4,
+      "respostas":[
+         {
+            "texto":"H2O",
+            "correta":true
+         },
+         {
+            "texto":"CO2",
+            "correta":false
+         },
+         {
+            "texto":"NaCl",
+            "correta":false
+         },
+         {
+            "texto":"O2",
+            "correta":false
+         }
+      ]
+   },
+   {
+      "pergunta":"Qual é o país de origem dos Jogos Olímpicos?",
+      "nivel":4,
+      "respostas":[
+         {
+            "texto":"Grécia",
+            "correta":true
+         },
+         {
+            "texto":"Roma",
+            "correta":false
+         },
+         {
+            "texto":"França",
+            "correta":false
+         },
+         {
+            "texto":"Egito",
+            "correta":false
+         }
+      ]
+   },
+   {
+      "pergunta":"Em que ano aconteceu a Revolução Francesa?",
+      "nivel":4,
+      "respostas":[
+         {
+            "texto":"1789",
+            "correta":true
+         },
+         {
+            "texto":"1776",
+            "correta":false
+         },
+         {
+            "texto":"1804",
+            "correta":false
+         },
+         {
+            "texto":"1815",
+            "correta":false
+         }
+      ]
+   },
+   {
+      "pergunta":"Qual cientista propôs as leis do movimento?",
+      "nivel":4,
+      "respostas":[
+         {
+            "texto":"Isaac Newton",
+            "correta":true
+         },
+         {
+            "texto":"Galileu Galilei",
+            "correta":false
+         },
+         {
+            "texto":"Johannes Kepler",
+            "correta":false
+         },
+         {
+            "texto":"Copérnico",
+            "correta":false
+         }
+      ]
+   },
+   {
+      "pergunta":"Qual é o menor país do mundo?",
+      "nivel":4,
+      "respostas":[
+         {
+            "texto":"Vaticano",
+            "correta":true
+         },
+         {
+            "texto":"Mônaco",
+            "correta":false
+         },
+         {
+            "texto":"San Marino",
+            "correta":false
+         },
+         {
+            "texto":"Liechtenstein",
+            "correta":false
+         }
+      ]
+   },
+   {
+      "pergunta":"Quem escreveu 'O Príncipe'?",
+      "nivel":4,
+      "respostas":[
+         {
+            "texto":"Maquiavel",
+            "correta":true
+         },
+         {
+            "texto":"Platão",
+            "correta":false
+         },
+         {
+            "texto":"Sócrates",
+            "correta":false
+         },
+         {
+            "texto":"Aristóteles",
+            "correta":false
+         }
+      ]
+   },
+   {
+      "pergunta":"Qual é a principal moeda do Japão?",
+      "nivel":4,
+      "respostas":[
+         {
+            "texto":"Iene",
+            "correta":true
+         },
+         {
+            "texto":"Yuan",
+            "correta":false
+         },
+         {
+            "texto":"Won",
+            "correta":false
+         },
+         {
+            "texto":"Dólar",
+            "correta":false
+         }
+      ]
+   },
+   {
+      "pergunta":"Quem foi o primeiro homem a pisar na Lua?",
+      "nivel":4,
+      "respostas":[
+         {
+            "texto":"Neil Armstrong",
+            "correta":true
+         },
+         {
+            "texto":"Buzz Aldrin",
+            "correta":false
+         },
+         {
+            "texto":"Yuri Gagarin",
+            "correta":false
+         },
+         {
+            "texto":"Michael Collins",
+            "correta":false
+         }
+      ]
+   },
+   {
+      "pergunta":"Qual é o maior deserto do mundo?",
+      "nivel":4,
+      "respostas":[
+         {
+            "texto":"Saara",
+            "correta":false
+         },
+         {
+            "texto":"Antártida",
+            "correta":true
+         },
+         {
+            "texto":"Gobi",
+            "correta":false
+         },
+         {
+            "texto":"Kalahari",
+            "correta":false
+         }
+      ]
+   },
+   {
+      "pergunta":"Quem pintou o teto da Capela Sistina?",
+      "nivel":4,
+      "respostas":[
+         {
+            "texto":"Michelangelo",
+            "correta":true
+         },
+         {
+            "texto":"Leonardo da Vinci",
+            "correta":false
+         },
+         {
+            "texto":"Rafael",
+            "correta":false
+         },
+         {
+            "texto":"Donatello",
+            "correta":false
+         }
+      ]
+   },
+   {
+      "pergunta":"Qual é o idioma oficial da Suíça?",
+      "nivel":5,
+      "respostas":[
+         {
+            "texto":"Alemão, Francês, Italiano e Romanche",
+            "correta":true
+         },
+         {
+            "texto":"Alemão",
+            "correta":false
+         },
+         {
+            "texto":"Francês",
+            "correta":false
+         },
+         {
+            "texto":"Italiano",
+            "correta":false
+         }
+      ]
+   },
+   {
+      "pergunta":"Em que ano terminou a Segunda Guerra Mundial?",
+      "nivel":5,
+      "respostas":[
+         {
+            "texto":"1945",
+            "correta":true
+         },
+         {
+            "texto":"1940",
+            "correta":false
+         },
+         {
+            "texto":"1939",
+            "correta":false
+         },
+         {
+            "texto":"1950",
+            "correta":false
+         }
+      ]
+   },
+   {
+      "pergunta":"Qual filósofo escreveu 'A República'?",
+      "nivel":5,
+      "respostas":[
+         {
+            "texto":"Platão",
+            "correta":true
+         },
+         {
+            "texto":"Sócrates",
+            "correta":false
+         },
+         {
+            "texto":"Aristóteles",
+            "correta":false
+         },
+         {
+            "texto":"Epicuro",
+            "correta":false
+         }
+      ]
+   },
+   {
+      "pergunta":"Quem descobriu a penicilina?",
+      "nivel":5,
+      "respostas":[
+         {
+            "texto":"Alexander Fleming",
+            "correta":true
+         },
+         {
+            "texto":"Louis Pasteur",
+            "correta":false
+         },
+         {
+            "texto":"Robert Koch",
+            "correta":false
+         },
+         {
+            "texto":"Joseph Lister",
+            "correta":false
+         }
+      ]
+   },
+   {
+      "pergunta":"Qual é a capital da Austrália?",
+      "nivel":5,
+      "respostas":[
+         {
+            "texto":"Camberra",
+            "correta":true
+         },
+         {
+            "texto":"Sydney",
+            "correta":false
+         },
+         {
+            "texto":"Melbourne",
+            "correta":false
+         },
+         {
+            "texto":"Perth",
+            "correta":false
+         }
+      ]
+   },
+   {
+      "pergunta":"Qual cientista é conhecido como pai da genética?",
+      "nivel":5,
+      "respostas":[
+         {
+            "texto":"Gregor Mendel",
+            "correta":true
+         },
+         {
+            "texto":"Charles Darwin",
+            "correta":false
+         },
+         {
+            "texto":"Louis Pasteur",
+            "correta":false
+         },
+         {
+            "texto":"Francis Crick",
+            "correta":false
+         }
+      ]
+   },
+   {
+      "pergunta":"Qual é o maior país do mundo em território?",
+      "nivel":5,
+      "respostas":[
+         {
+            "texto":"Rússia",
+            "correta":true
+         },
+         {
+            "texto":"Canadá",
+            "correta":false
+         },
+         {
+            "texto":"China",
+            "correta":false
+         },
+         {
+            "texto":"Estados Unidos",
+            "correta":false
+         }
+      ]
+   },
+   {
+      "pergunta":"Quem escreveu 'Ilíada' e 'Odisseia'?",
+      "nivel":5,
+      "respostas":[
+         {
+            "texto":"Homero",
+            "correta":true
+         },
+         {
+            "texto":"Virgílio",
+            "correta":false
+         },
+         {
+            "texto":"Sófocles",
+            "correta":false
+         },
+         {
+            "texto":"Eurípedes",
+            "correta":false
+         }
+      ]
+   },
+   {
+      "pergunta":"Qual é a partícula responsável pela transmissão da força eletromagnética?",
+      "nivel":6,
+      "respostas":[
+         {
+            "texto":"Fóton",
+            "correta":true
+         },
+         {
+            "texto":"Gluon",
+            "correta":false
+         },
+         {
+            "texto":"Bóson W",
+            "correta":false
+         },
+         {
+            "texto":"Nêutron",
+            "correta":false
+         }
+      ]
+   },
+   {
+      "pergunta":"Em que ano ocorreu a queda do Império Romano do Ocidente?",
+      "nivel":6,
+      "respostas":[
+         {
+            "texto":"476 d.C.",
+            "correta":true
+         },
+         {
+            "texto":"395 d.C.",
+            "correta":false
+         },
+         {
+            "texto":"410 d.C.",
+            "correta":false
+         },
+         {
+            "texto":"1453 d.C.",
+            "correta":false
+         }
+      ]
+   },
+   {
+      "pergunta":"Quem formulou a equação da Relatividade Geral?",
+      "nivel":6,
+      "respostas":[
+         {
+            "texto":"Albert Einstein",
+            "correta":true
+         },
+         {
+            "texto":"Isaac Newton",
+            "correta":false
+         },
+         {
+            "texto":"Niels Bohr",
+            "correta":false
+         },
+         {
+            "texto":"Max Planck",
+            "correta":false
+         }
+      ]
+   },
+   {
+      "pergunta":"Qual foi a primeira civilização a desenvolver a escrita cuneiforme?",
+      "nivel":6,
+      "respostas":[
+         {
+            "texto":"Sumérios",
+            "correta":true
+         },
+         {
+            "texto":"Egípcios",
+            "correta":false
+         },
+         {
+            "texto":"Persas",
+            "correta":false
+         },
+         {
+            "texto":"Hititas",
+            "correta":false
+         }
+      ]
+   },
+   {
+      "pergunta":"Qual elemento químico tem símbolo 'W'?",
+      "nivel":6,
+      "respostas":[
+         {
+            "texto":"Tungstênio",
+            "correta":true
+         },
+         {
+            "texto":"Wólframio",
+            "correta":false
+         },
+         {
+            "texto":"Vanádio",
+            "correta":false
+         },
+         {
+            "texto":"Manganês",
+            "correta":false
+         }
+      ]
+   },
+   {
+      "pergunta":"Quem pintou o teto da Capela Sistina?",
+      "nivel":6,
+      "respostas":[
+         {
+            "texto":"Michelangelo",
+            "correta":true
+         },
+         {
+            "texto":"Leonardo da Vinci",
+            "correta":false
+         },
+         {
+            "texto":"Rafael",
+            "correta":false
+         },
+         {
+            "texto":"Donatello",
+            "correta":false
+         }
+      ]
+   },
+   {
+      "pergunta":"Qual país é conhecido historicamente como 'Pérsia'?",
+      "nivel":6,
+      "respostas":[
+         {
+            "texto":"Irã",
+            "correta":true
+         },
+         {
+            "texto":"Iraque",
+            "correta":false
+         },
+         {
+            "texto":"Síria",
+            "correta":false
+         },
+         {
+            "texto":"Turquia",
+            "correta":false
+         }
+      ]
+   },
+   {
+      "pergunta":"Em que ano foi publicada a obra 'A Origem das Espécies', de Charles Darwin?",
+      "nivel":6,
+      "respostas":[
+         {
+            "texto":"1859",
+            "correta":true
+         },
+         {
+            "texto":"1809",
+            "correta":false
+         },
+         {
+            "texto":"1901",
+            "correta":false
+         },
+         {
+            "texto":"1835",
+            "correta":false
+         }
+      ]
+   },
+   {
+      "pergunta":"Qual é a capital da Mongólia?",
+      "nivel":6,
+      "respostas":[
+         {
+            "texto":"Ulã Bator",
+            "correta":true
+         },
+         {
+            "texto":"Astana",
+            "correta":false
+         },
+         {
+            "texto":"Tashkent",
+            "correta":false
+         },
+         {
+            "texto":"Kabul",
+            "correta":false
+         }
+      ]
+   },
+   {
+      "pergunta":"Qual filósofo escreveu a obra 'A República'?",
+      "nivel":6,
+      "respostas":[
+         {
+            "texto":"Platão",
+            "correta":true
+         },
+         {
+            "texto":"Aristóteles",
+            "correta":false
+         },
+         {
+            "texto":"Sócrates",
+            "correta":false
+         },
+         {
+            "texto":"Epicuro",
+            "correta":false
+         }
+      ]
+   },
+   {
+      "pergunta":"Quem formulou a lei da gravitação universal?",
+      "nivel":7,
+      "respostas":[
+         {
+            "texto":"Isaac Newton",
+            "correta":true
+         },
+         {
+            "texto":"Galileu Galilei",
+            "correta":false
+         },
+         {
+            "texto":"Kepler",
+            "correta":false
+         },
+         {
+            "texto":"Copérnico",
+            "correta":false
+         }
+      ]
+   },
+   {
+      "pergunta":"Qual foi a primeira dinastia imperial da China?",
+      "nivel":7,
+      "respostas":[
+         {
+            "texto":"Dinastia Qin",
+            "correta":true
+         },
+         {
+            "texto":"Dinastia Han",
+            "correta":false
+         },
+         {
+            "texto":"Dinastia Tang",
+            "correta":false
+         },
+         {
+            "texto":"Dinastia Zhou",
+            "correta":false
+         }
+      ]
+   },
+   {
+      "pergunta":"Quem é o autor de 'Guerra e Paz'?",
+      "nivel":7,
+      "respostas":[
+         {
+            "texto":"Liev Tolstói",
+            "correta":true
+         },
+         {
+            "texto":"Fiódor Dostoiévski",
+            "correta":false
+         },
+         {
+            "texto":"Tchékhov",
+            "correta":false
+         },
+         {
+            "texto":"Púchkin",
+            "correta":false
+         }
+      ]
+   },
+   {
+      "pergunta":"Qual é a equação de Schrödinger relacionada à mecânica quântica?",
+      "nivel":7,
+      "respostas":[
+         {
+            "texto":"Equação de onda",
+            "correta":true
+         },
+         {
+            "texto":"Equação de Maxwell",
+            "correta":false
+         },
+         {
+            "texto":"Equação de Dirac",
+            "correta":false
+         },
+         {
+            "texto":"Equação de Euler",
+            "correta":false
+         }
+      ]
+   },
+   {
+      "pergunta":"Quem foi o primeiro imperador de Roma?",
+      "nivel":7,
+      "respostas":[
+         {
+            "texto":"Otávio Augusto",
+            "correta":true
+         },
+         {
+            "texto":"Júlio César",
+            "correta":false
+         },
+         {
+            "texto":"Nero",
+            "correta":false
+         },
+         {
+            "texto":"Calígula",
+            "correta":false
+         }
+      ]
+   },
+   {
+      "pergunta":"Qual é a molécula responsável pelo armazenamento de energia nas células?",
+      "nivel":7,
+      "respostas":[
+         {
+            "texto":"ATP",
+            "correta":true
+         },
+         {
+            "texto":"ADN",
+            "correta":false
+         },
+         {
+            "texto":"RNA",
+            "correta":false
+         },
+         {
+            "texto":"Glicose",
+            "correta":false
+         }
+      ]
+   },
+   {
+      "pergunta":"Quem foi o responsável pela teoria heliocêntrica no Renascimento?",
+      "nivel":7,
+      "respostas":[
+         {
+            "texto":"Nicolau Copérnico",
+            "correta":true
+         },
+         {
+            "texto":"Galileu Galilei",
+            "correta":false
+         },
+         {
+            "texto":"Kepler",
+            "correta":false
+         },
+         {
+            "texto":"Ptolomeu",
+            "correta":false
+         }
+      ]
+   },
+   {
+      "pergunta":"Em que ano ocorreu a Revolução Francesa?",
+      "nivel":7,
+      "respostas":[
+         {
+            "texto":"1789",
+            "correta":true
+         },
+         {
+            "texto":"1799",
+            "correta":false
+         },
+         {
+            "texto":"1776",
+            "correta":false
+         },
+         {
+            "texto":"1815",
+            "correta":false
+         }
+      ]
+   },
+   {
+      "pergunta":"Qual é o nome do processo celular em que ocorre a divisão nuclear em células somáticas?",
+      "nivel":7,
+      "respostas":[
+         {
+            "texto":"Mitose",
+            "correta":true
+         },
+         {
+            "texto":"Meiose",
+            "correta":false
+         },
+         {
+            "texto":"Fissão binária",
+            "correta":false
+         },
+         {
+            "texto":"Apoptose",
+            "correta":false
+         }
+      ]
+   },
+   {
+      "pergunta":"Quem escreveu 'O Príncipe'?",
+      "nivel":7,
+      "respostas":[
+         {
+            "texto":"Maquiavel",
+            "correta":true
+         },
+         {
+            "texto":"Thomas Hobbes",
+            "correta":false
+         },
+         {
+            "texto":"John Locke",
+            "correta":false
+         },
+         {
+            "texto":"Montesquieu",
+            "correta":false
+         }
+      ]
+   },
+   {
+      "pergunta":"Qual cientista propôs o princípio da incerteza?",
+      "nivel":8,
+      "respostas":[
+         {
+            "texto":"Werner Heisenberg",
+            "correta":true
+         },
+         {
+            "texto":"Albert Einstein",
+            "correta":false
+         },
+         {
+            "texto":"Erwin Schrödinger",
+            "correta":false
+         },
+         {
+            "texto":"Max Born",
+            "correta":false
+         }
+      ]
+   },
+   {
+      "pergunta":"Quem foi o faraó durante o Êxodo, segundo a tradição bíblica?",
+      "nivel":8,
+      "respostas":[
+         {
+            "texto":"Ramessés II",
+            "correta":true
+         },
+         {
+            "texto":"Tutancâmon",
+            "correta":false
+         },
+         {
+            "texto":"Amenófis III",
+            "correta":false
+         },
+         {
+            "texto":"Akhenaton",
+            "correta":false
+         }
+      ]
+   },
+   {
+      "pergunta":"Qual é a capital do Butão?",
+      "nivel":8,
+      "respostas":[
+         {
+            "texto":"Thimphu",
+            "correta":true
+         },
+         {
+            "texto":"Katmandu",
+            "correta":false
+         },
+         {
+            "texto":"Daca",
+            "correta":false
+         },
+         {
+            "texto":"Lhasa",
+            "correta":false
+         }
+      ]
+   },
+   {
+      "pergunta":"Quem escreveu a peça 'Rei Lear'?",
+      "nivel":8,
+      "respostas":[
+         {
+            "texto":"William Shakespeare",
+            "correta":true
+         },
+         {
+            "texto":"Christopher Marlowe",
+            "correta":false
+         },
+         {
+            "texto":"Ben Jonson",
+            "correta":false
+         },
+         {
+            "texto":"Thomas More",
+            "correta":false
+         }
+      ]
+   },
+   {
+      "pergunta":"Qual foi a principal inovação do Código de Hamurabi?",
+      "nivel":8,
+      "respostas":[
+         {
+            "texto":"Lei escrita",
+            "correta":true
+         },
+         {
+            "texto":"Exército permanente",
+            "correta":false
+         },
+         {
+            "texto":"Moeda padronizada",
+            "correta":false
+         },
+         {
+            "texto":"Tributo obrigatório",
+            "correta":false
+         }
+      ]
+   },
+   {
+      "pergunta":"Quem foi o autor da teoria da seleção natural?",
+      "nivel":8,
+      "respostas":[
+         {
+            "texto":"Charles Darwin",
+            "correta":true
+         },
+         {
+            "texto":"Jean-Baptiste Lamarck",
+            "correta":false
+         },
+         {
+            "texto":"Gregor Mendel",
+            "correta":false
+         },
+         {
+            "texto":"Carl Linnaeus",
+            "correta":false
+         }
+      ]
+   },
+   {
+      "pergunta":"Qual a capital do Cazaquistão?",
+      "nivel":8,
+      "respostas":[
+         {
+            "texto":"Astana (Nursultan)",
+            "correta":true
+         },
+         {
+            "texto":"Tashkent",
+            "correta":false
+         },
+         {
+            "texto":"Bacu",
+            "correta":false
+         },
+         {
+            "texto":"Bishkek",
+            "correta":false
+         }
+      ]
+   },
+   {
+      "pergunta":"Qual obra é considerada a principal de Dante Alighieri?",
+      "nivel":8,
+      "respostas":[
+         {
+            "texto":"A Divina Comédia",
+            "correta":true
+         },
+         {
+            "texto":"O Banquete",
+            "correta":false
+         },
+         {
+            "texto":"Paraíso Perdido",
+            "correta":false
+         },
+         {
+            "texto":"Éneida",
+            "correta":false
+         }
+      ]
+   },
+   {
+      "pergunta":"Qual cientista propôs a equação E=mc²?",
+      "nivel":8,
+      "respostas":[
+         {
+            "texto":"Albert Einstein",
+            "correta":true
+         },
+         {
+            "texto":"Niels Bohr",
+            "correta":false
+         },
+         {
+            "texto":"Max Planck",
+            "correta":false
+         },
+         {
+            "texto":"Galileu Galilei",
+            "correta":false
+         }
+      ]
+   },
+   {
+      "pergunta":"Em que cidade ocorreu a assinatura do Tratado de Versalhes?",
+      "nivel":8,
+      "respostas":[
+         {
+            "texto":"Versalhes",
+            "correta":true
+         },
+         {
+            "texto":"Paris",
+            "correta":false
+         },
+         {
+            "texto":"Genebra",
+            "correta":false
+         },
+         {
+            "texto":"Londres",
+            "correta":false
+         }
+      ]
+   }
+]
