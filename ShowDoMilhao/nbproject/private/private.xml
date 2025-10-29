@@ -2,6 +2,13 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/E:/Workspace/ShowDoMilhao/ShowDoMilhao/src/Connections/TCPClientHandler.java</file>
+            <file>file:/E:/Workspace/ShowDoMilhao/ShowDoMilhao/src/Connections/TCPClientMain.java</file>
+            <file>file:/E:/Workspace/ShowDoMilhao/ShowDoMilhao/src/views/Game.java</file>
+            <file>file:/E:/Workspace/ShowDoMilhao/ShowDoMilhao/src/Connections/TCPServerAtivosMain.java</file>
+            <file>file:/E:/Workspace/ShowDoMilhao/ShowDoMilhao/src/views/Server.java</file>
+            <file>file:/E:/Workspace/ShowDoMilhao/ShowDoMilhao/src/Connections/TCPServerAtivosHandler.java</file>
+        </group>
     </open-files>
 </project-private>

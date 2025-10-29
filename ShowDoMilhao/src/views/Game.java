@@ -4,9 +4,11 @@
  */
 package views;
 
+import Connections.TCPClientMain;
 import gameRules.PerguntasManager;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import javax.swing.JOptionPane;
 import javax.swing.Timer;
 import models.Pergunta;
@@ -17,23 +19,26 @@ import models.Pergunta;
  */
 public class Game extends javax.swing.JFrame {
 
+    private int playerId;
     private int nivelAtual = 1;
     private Pergunta perguntaAtual;
     private PerguntasManager pm;
     private Timer timer;
     private int tempo = 30;
+    private int startTimeSeconds = 5;
+    private TCPClientMain tcpClient;
     
     /**
      * Creates new form Game
      */
     public Game() {
-        pm = new PerguntasManager();
+        //pm = new PerguntasManager();
         initComponents();
         setLocationRelativeTo(null);
-        perguntaAtual = pm.getPerguntasByNivel(nivelAtual);
-        printPergunta();
+        //perguntaAtual = pm.getPerguntasByNivel(nivelAtual);
+        //printPergunta();
         
-        timer = new Timer(1000, new ActionListener() {
+        /*timer = new Timer(1000, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 tempo--;
@@ -46,8 +51,63 @@ public class Game extends javax.swing.JFrame {
             }
         });
         
-        timer.start();
+        timer.start();*/
         
+    }
+
+    public Timer getTimer() {
+        return timer;
+    }
+    
+    public void resetLayout() {
+        if(timer != null) {
+            timer.stop();
+        }
+        jButton1.setEnabled(true);
+        jButton2.setEnabled(false);
+        nivelAtual = 1;
+        tempo = 30;
+        startTimeSeconds = 5;
+        jLabelNivel.setText("Nível:");
+        jLabelNivelNumero.setText("0");
+        jLabelTempo.setText("Tempo:");
+        jLabelTempoNumero.setText("30");
+        jLabelPergunta.setText("Conecte em um servidor para começar a jogar!");
+        jButtonRespostaA.setText("");
+        jButtonRespostaA.setEnabled(false);
+        jButtonRespostaB.setText("");
+        jButtonRespostaB.setEnabled(false);
+        jButtonRespostaC.setText("");
+        jButtonRespostaC.setEnabled(false);
+        jButtonRespostaD.setText("");
+        jButtonRespostaD.setEnabled(false);
+    }
+    
+    public void setPlayerId(int id) {
+        this.playerId = id;
+    }
+    
+    public void setInitialTimer() {
+        startTimeSeconds = 5;
+        timer = new Timer(1000, new ActionListener() {
+            
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                startTimeSeconds--;
+                
+                if(startTimeSeconds != 0) {
+                    jLabelPergunta.setText("Jogo iniciando em " + Integer.toString(startTimeSeconds) + " segundos!");
+                }
+                
+                if (startTimeSeconds <= 0) {
+                    timer.stop();
+                    jLabelPergunta.setText("O jogo irá começar!");
+                    tcpClient.writeMessage("GAMERULE|ConfirmStartByPlayer|" + playerId);
+                }
+            }
+        });
+        
+        timer.start();
     }
     
     private void printPergunta() {
@@ -84,6 +144,17 @@ public class Game extends javax.swing.JFrame {
         perguntaAtual = pm.getPerguntasByNivel(nivelAtual);
         printPergunta();
     }
+    
+    public void closeConnection() {
+        try {
+            tcpClient.writeMessage("SYSTEM|Disconnect|" + playerId);
+            tcpClient.closeConnection();
+            resetLayout();
+        } catch (IOException ex) {
+            JOptionPane.showMessageDialog(this,
+                    ex.getMessage(), "ERRO", JOptionPane.ERROR_MESSAGE);
+        }
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -105,10 +176,22 @@ public class Game extends javax.swing.JFrame {
         jButtonRespostaA = new javax.swing.JButton();
         jButtonRespostaD = new javax.swing.JButton();
         jButtonRespostaC = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jTextField2 = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Show do Milhão");
         setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
 
         jPanelMain.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -129,7 +212,7 @@ public class Game extends javax.swing.JFrame {
         jLabelPergunta.setBackground(new java.awt.Color(255, 255, 255));
         jLabelPergunta.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
         jLabelPergunta.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabelPergunta.setText("jLabel1");
+        jLabelPergunta.setText("Conecte em um servidor para começar a jogar!");
         jLabelPergunta.setToolTipText("");
 
         javax.swing.GroupLayout jPanelPerguntaLayout = new javax.swing.GroupLayout(jPanelPergunta);
@@ -150,7 +233,7 @@ public class Game extends javax.swing.JFrame {
         );
 
         jButtonRespostaB.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jButtonRespostaB.setText("jButton1");
+        jButtonRespostaB.setEnabled(false);
         jButtonRespostaB.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonRespostaBActionPerformed(evt);
@@ -158,7 +241,7 @@ public class Game extends javax.swing.JFrame {
         });
 
         jButtonRespostaA.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jButtonRespostaA.setText("jButton1");
+        jButtonRespostaA.setEnabled(false);
         jButtonRespostaA.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonRespostaAActionPerformed(evt);
@@ -166,7 +249,7 @@ public class Game extends javax.swing.JFrame {
         });
 
         jButtonRespostaD.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jButtonRespostaD.setText("jButton1");
+        jButtonRespostaD.setEnabled(false);
         jButtonRespostaD.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonRespostaDActionPerformed(evt);
@@ -174,7 +257,7 @@ public class Game extends javax.swing.JFrame {
         });
 
         jButtonRespostaC.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jButtonRespostaC.setText("jButton1");
+        jButtonRespostaC.setEnabled(false);
         jButtonRespostaC.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonRespostaCActionPerformed(evt);
@@ -230,21 +313,84 @@ public class Game extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        jLabel1.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        jLabel1.setText("Cliente - Show do Milhão");
+
+        jTextField1.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jTextField1.setText("localhost");
+
+        jLabel2.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jLabel2.setText("Server:");
+
+        jLabel3.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jLabel3.setText("Porta:");
+
+        jTextField2.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jTextField2.setText("6789");
+
+        jButton1.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jButton1.setText("Conectar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        jButton2.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jButton2.setText("Desconectar");
+        jButton2.setEnabled(false);
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanelMain, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jPanelMain, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addGap(433, 433, 433))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(jLabel2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel3)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jButton1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jButton2)
+                                .addGap(272, 272, 272))))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton1)
+                    .addComponent(jButton2)
+                    .addComponent(jLabel3)
+                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jPanelMain, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         pack();
@@ -265,6 +411,32 @@ public class Game extends javax.swing.JFrame {
     private void jButtonRespostaDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRespostaDActionPerformed
         verifyRespostaCerta(3);
     }//GEN-LAST:event_jButtonRespostaDActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        try {
+            String server = jTextField1.getText();
+            int porta = Integer.parseInt(jTextField2.getText());
+            jButton1.setEnabled(false);
+            jButton2.setEnabled(true);
+            jLabelPergunta.setText("Servidor conectado! Aguarde a contagem para o jogo começar!");
+            tcpClient = new TCPClientMain(server, porta, this);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this,
+                e.getMessage(), "ERRO AO CONECTAR: ", JOptionPane.ERROR_MESSAGE);
+            resetLayout();
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        closeConnection();
+        resetLayout();
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        if(tcpClient != null) {
+            closeConnection();
+        }
+    }//GEN-LAST:event_formWindowClosing
 
     /**
      * @param args the command line arguments
@@ -302,10 +474,15 @@ public class Game extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButtonRespostaA;
     private javax.swing.JButton jButtonRespostaB;
     private javax.swing.JButton jButtonRespostaC;
     private javax.swing.JButton jButtonRespostaD;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabelNivel;
     private javax.swing.JLabel jLabelNivelNumero;
     private javax.swing.JLabel jLabelPergunta;
@@ -313,5 +490,7 @@ public class Game extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelTempoNumero;
     private javax.swing.JPanel jPanelMain;
     private javax.swing.JPanel jPanelPergunta;
+    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField2;
     // End of variables declaration//GEN-END:variables
 }
