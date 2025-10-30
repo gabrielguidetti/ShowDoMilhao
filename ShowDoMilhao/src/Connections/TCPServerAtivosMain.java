@@ -1,5 +1,6 @@
 package Connections;
 
+import gameRules.GameMatch;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
@@ -9,6 +10,8 @@ import java.net.Socket;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.Timer;
+import models.Resposta;
+import models.Turn;
 import views.Server;
 
 public class TCPServerAtivosMain extends Thread {
@@ -17,17 +20,54 @@ public class TCPServerAtivosMain extends Thread {
     private ServerSocket server;
     private Server caller;
     private Timer timer;
-    private int startTimeSeconds = 5;
     private int playerId = 1;
+    private GameMatch gm;
+    private int tempo;
 
     public TCPServerAtivosMain(int porta, Server caller) throws IOException {
         this.server = new ServerSocket(porta);
         this.clientes = new ArrayList<>();
         this.caller = caller;
+        this.gm = new GameMatch();
+    }
+
+    public GameMatch getGm() {
+        return gm;
     }
 
     public Timer getTimer() {
         return timer;
+    }
+    
+    public void sendTurns() {
+        Turn turn = gm.getTurn();
+        String message = "TURN|ShowQuestion|" + turn.getPergunta().getPergunta() + "|" + turn.getPergunta().getNivel();
+        
+        for(Resposta r : turn.getPergunta().getRespostas()) {
+            message += "|" + r.getTexto();
+        }
+        
+        sendMessageToPlayer(turn.getPlayerId(), message);
+        sendMessageToOtherPlayer(turn.getPlayerId(), "GAMERULE|WaitOpponent");
+        caller.addMessageLog("Pergunta enviada para playerId: " + turn.getPlayerId() + ", o outro jogador está aguardando!");
+        startTurnTimer();
+    }
+    
+    private void startTurnTimer() {
+        tempo = 31;
+        timer = new Timer(1000, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                tempo--;
+                caller.addMessageLog("TEMPO RESTANTE PARA RESPOSTA: " + tempo + " SEGUNDOS!");
+                
+                if (tempo <= 0) {
+                    timer.stop();
+                }
+            }
+        });
+        
+        timer.start();
     }
 
     @Override
@@ -63,26 +103,7 @@ public class TCPServerAtivosMain extends Thread {
                                 cli.getOutput().flush();
                             }
                         }
-                        caller.addMessageLog("Contagem inicial para inicio de jogo!");
-                        
-                        startTimeSeconds = 5;
-                        timer = new Timer(1000, new ActionListener() {
-                            @Override
-                            public void actionPerformed(ActionEvent e) {
-                                startTimeSeconds--;
-                                
-                                if(startTimeSeconds != 0) {
-                                    caller.addMessageLog("Jogo iniciando em " + Integer.toString(startTimeSeconds) + " segundos!");
-                                }
-                                
-                                if (startTimeSeconds <= 0) {
-                                    timer.stop();
-                                    caller.addMessageLog("O jogo irá começar! Aguardando confirmação de tempo dos clientes!");
-                                }
-                            }
-                        });
-
-                        timer.start();
+                        caller.addMessageLog("Contagem inicial para inicio de jogo! Aguardando confirmações dos clientes!");
                     }
                 }
             } catch (IOException ex) {
@@ -119,7 +140,17 @@ public class TCPServerAtivosMain extends Thread {
             if (otherClient.getSocket() != null && otherClient.getSocket().isConnected() && otherClient.getOutput() != null) {
                 otherClient.getOutput().println(message);
                 otherClient.getOutput().flush();
-                removerCliente(otherClient);
+            }
+        }
+    }
+    
+    public synchronized void sendMessageToPlayer(int playerId, String message) {
+        TCPServerConnection otherClient = clientes.stream().filter(x -> x.getPlayerId() == playerId).findFirst().orElse(null);
+        
+        if(otherClient != null) {
+            if (otherClient.getSocket() != null && otherClient.getSocket().isConnected() && otherClient.getOutput() != null) {
+                otherClient.getOutput().println(message);
+                otherClient.getOutput().flush();
             }
         }
     }

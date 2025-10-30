@@ -3,6 +3,7 @@ package Connections;
 import java.awt.event.KeyEvent;
 import java.io.IOException;
 import java.util.List;
+import models.Resposta;
 import views.Server;
 
 public class TCPServerAtivosHandler extends Thread {
@@ -38,7 +39,6 @@ public class TCPServerAtivosHandler extends Thread {
 
     @Override
     public void run() {
-
         String message;
         while (true) {
             try {
@@ -59,6 +59,13 @@ public class TCPServerAtivosHandler extends Thread {
                     if(conteudo.equalsIgnoreCase("ConfirmStartByPlayer")) {
                         String parameter = partes.length > 2 ? partes[2] : "";
                         caller.addMessageLog("Confirmação de inicio do jogador playerId: " + parameter);
+                        
+                        if(this.main.getGm().getP1Id() == 0) {
+                            this.main.getGm().setP1Id(Integer.parseInt(parameter));
+                        } else {
+                            this.main.getGm().setP2Id(Integer.parseInt(parameter));
+                            this.main.sendTurns();
+                        }
                     }
                 }
                 
@@ -66,20 +73,35 @@ public class TCPServerAtivosHandler extends Thread {
                     if(conteudo.equalsIgnoreCase("Disconnect")) {
                         String parameter = partes.length > 2 ? partes[2] : "";
                         caller.addMessageLog("Request de Desconexão do jogador playerId: " + parameter);
-                        caller.addMessageLog("Contagem parada!");
                         int playerId = Integer.parseInt(parameter);
-                        if(this.main.getTimer() != null) {
-                            this.main.getTimer().stop();
-                        }
                         this.main.sendMessageToOtherPlayer(playerId, "SYSTEM|OtherPlayerDisconnect");
+                        this.main.getGm().resetGameMatch();
+                        caller.addMessageLog("Jogo reiniciado!");
                     }
                 }
                 
-                
-                //messageDispatcher(message);
-                //caller.addMessageLog(message);
+                if (tipo.equalsIgnoreCase("TURN")) {
+                    if(conteudo.equalsIgnoreCase("PlayerResponse")) {
+                        String response = partes.length > 2 ? partes[2] : "";
+                        caller.addMessageLog("Respsota dada pelo jogador: " + response);
+                        
+                        Resposta correctResponse = this.main.getGm().getActualQuestion().getRespostas().stream().filter(x -> x.isCorreta()).findFirst().orElse(null);
+                        
+                        if(correctResponse != null) {
+                            if(correctResponse.getTexto().equals(response)) {
+                                caller.addMessageLog("Jogador ACERTOU!");
+                            } else {
+                                caller.addMessageLog("Jogador ERROU!");
+                            }
+                            
+                            if(this.main.getTimer() != null) {
+                                this.main.getTimer().stop();
+                            }
+                        }
+                    }
+                }
             } catch (Exception ex) {
-                System.out.println(ex.getMessage());
+                caller.addMessageLog("ERRO: " + ex.getMessage());
                 break;
             }
         }

@@ -20,9 +20,6 @@ import models.Pergunta;
 public class Game extends javax.swing.JFrame {
 
     private int playerId;
-    private int nivelAtual = 1;
-    private Pergunta perguntaAtual;
-    private PerguntasManager pm;
     private Timer timer;
     private int tempo = 30;
     private int startTimeSeconds = 5;
@@ -32,31 +29,28 @@ public class Game extends javax.swing.JFrame {
      * Creates new form Game
      */
     public Game() {
-        //pm = new PerguntasManager();
         initComponents();
         setLocationRelativeTo(null);
-        //perguntaAtual = pm.getPerguntasByNivel(nivelAtual);
-        //printPergunta();
-        
-        /*timer = new Timer(1000, new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                tempo--;
-                jLabelTempoNumero.setText(Integer.toString(tempo));
-
-                if (tempo <= 0) {
-                    timer.stop();
-                    JOptionPane.showMessageDialog(null, "Tempo esgotado!");
-                }
-            }
-        });
-        
-        timer.start();*/
-        
     }
 
     public Timer getTimer() {
         return timer;
+    }
+    
+    public void setWaitOpponent() {
+        jLabelNivel.setText("Nível:");
+        jLabelNivelNumero.setText("0");
+        jLabelTempo.setText("Tempo:");
+        jLabelTempoNumero.setText("30");
+        jLabelPergunta.setText("Vez do oponente! Fique esperto!");
+        jButtonRespostaA.setText("");
+        jButtonRespostaA.setEnabled(false);
+        jButtonRespostaB.setText("");
+        jButtonRespostaB.setEnabled(false);
+        jButtonRespostaC.setText("");
+        jButtonRespostaC.setEnabled(false);
+        jButtonRespostaD.setText("");
+        jButtonRespostaD.setEnabled(false);
     }
     
     public void resetLayout() {
@@ -65,7 +59,6 @@ public class Game extends javax.swing.JFrame {
         }
         jButton1.setEnabled(true);
         jButton2.setEnabled(false);
-        nivelAtual = 1;
         tempo = 30;
         startTimeSeconds = 5;
         jLabelNivel.setText("Nível:");
@@ -110,50 +103,55 @@ public class Game extends javax.swing.JFrame {
         timer.start();
     }
     
-    private void printPergunta() {
-        jLabelNivelNumero.setText(Integer.toString(nivelAtual));
+    public void printPergunta(String question, String r1, String r2, String r3, String r4, int level) {
+        jLabelNivelNumero.setText(Integer.toString(level));
         jLabelTempoNumero.setText(Integer.toString(tempo));
-        jLabelPergunta.setText(perguntaAtual.getPergunta());
-        jButtonRespostaA.setText("A. " + perguntaAtual.getRespostas().get(0).getTexto());
-        jButtonRespostaB.setText("B. " + perguntaAtual.getRespostas().get(1).getTexto());
-        jButtonRespostaC.setText("C. " + perguntaAtual.getRespostas().get(2).getTexto());
-        jButtonRespostaD.setText("D. " + perguntaAtual.getRespostas().get(3).getTexto());
+        jLabelPergunta.setText(question);
+        jButtonRespostaA.setText(r1);
+        jButtonRespostaB.setText(r2);
+        jButtonRespostaC.setText(r3);
+        jButtonRespostaD.setText(r4);
+        jButtonRespostaA.setEnabled(true);
+        jButtonRespostaB.setEnabled(true);
+        jButtonRespostaC.setEnabled(true);
+        jButtonRespostaD.setEnabled(true);
+        setTimer30Sec();
     }
     
-    private void verifyRespostaCerta(int respostaIndex) {
-        if(perguntaAtual.getRespostas().get(respostaIndex).isCorreta()) {
-            if(nivelAtual == 8) {
-                timer.stop();
-                JOptionPane.showMessageDialog(null, "PARABÉNS! VOCÊ É MILIONÁRIO");
-                jButtonRespostaA.setEnabled(false);
-                jButtonRespostaB.setEnabled(false);
-                jButtonRespostaC.setEnabled(false);
-                jButtonRespostaD.setEnabled(false);
-            } else {
-                tempo = 30;
-                passarNivel();
+    private void setTimer30Sec() {
+        tempo = 30;
+        timer = new Timer(1000, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                tempo--;
+                
+                jLabelTempoNumero.setText(Integer.toString(tempo));
+                
+                if (tempo <= 0) {
+                    timer.stop();
+                }
             }
-        } else {
-            perguntaAtual = pm.getPerguntasByNivel(nivelAtual);
-            printPergunta();
-        }
+        });
+        
+        timer.start();
     }
     
-    private void passarNivel(){
-        nivelAtual++;
-        perguntaAtual = pm.getPerguntasByNivel(nivelAtual);
-        printPergunta();
-    }
-    
-    public void closeConnection() {
+    public void closeConnection(Boolean auto) {
         try {
-            tcpClient.writeMessage("SYSTEM|Disconnect|" + playerId);
+            if(!auto) {
+                tcpClient.writeMessage("SYSTEM|Disconnect|" + playerId);
+            }
             tcpClient.closeConnection();
             resetLayout();
         } catch (IOException ex) {
             JOptionPane.showMessageDialog(this,
                     ex.getMessage(), "ERRO", JOptionPane.ERROR_MESSAGE);
         }
+    }
+    
+    public void sendResposta(String resposta) {
+        timer.stop();
+        tcpClient.writeMessage("TURN|PlayerResponse|" + resposta);
     }
 
     /**
@@ -397,19 +395,19 @@ public class Game extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonRespostaAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRespostaAActionPerformed
-        verifyRespostaCerta(0);
+        sendResposta(jButtonRespostaA.getText());
     }//GEN-LAST:event_jButtonRespostaAActionPerformed
 
     private void jButtonRespostaBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRespostaBActionPerformed
-        verifyRespostaCerta(1);
+        sendResposta(jButtonRespostaB.getText());
     }//GEN-LAST:event_jButtonRespostaBActionPerformed
 
     private void jButtonRespostaCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRespostaCActionPerformed
-        verifyRespostaCerta(2);
+        sendResposta(jButtonRespostaC.getText());
     }//GEN-LAST:event_jButtonRespostaCActionPerformed
 
     private void jButtonRespostaDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRespostaDActionPerformed
-        verifyRespostaCerta(3);
+        sendResposta(jButtonRespostaD.getText());
     }//GEN-LAST:event_jButtonRespostaDActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -428,13 +426,13 @@ public class Game extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        closeConnection();
+        closeConnection(false);
         resetLayout();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
         if(tcpClient != null) {
-            closeConnection();
+            closeConnection(false);
         }
     }//GEN-LAST:event_formWindowClosing
 

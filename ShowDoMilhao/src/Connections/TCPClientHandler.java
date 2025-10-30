@@ -4,7 +4,6 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.Socket;
-import java.util.StringTokenizer;
 import javax.swing.JOptionPane;
 import views.Game;
 
@@ -42,13 +41,29 @@ public class TCPClientHandler extends Thread {
                 if (tipo.equalsIgnoreCase("ERRO")) {
                     JOptionPane.showMessageDialog(null, conteudo, tipo, JOptionPane.WARNING_MESSAGE);
                     socket.close();
-                    caller.closeConnection();
+                    caller.closeConnection(true);
                     break;
                 }
                 
                 if (tipo.equalsIgnoreCase("GAMERULE")) {
                     if(conteudo.equalsIgnoreCase("InitialTime")) {
                         caller.setInitialTimer();
+                    }
+                    
+                    if(conteudo.equalsIgnoreCase("WaitOpponent")) {
+                        caller.setWaitOpponent();
+                    }
+                }
+                
+                if (tipo.equalsIgnoreCase("TURN")) {
+                    if(conteudo.equalsIgnoreCase("ShowQuestion")) {
+                        String question = partes[2];
+                        int level = Integer.parseInt(partes[3]);
+                        String r1 = partes[4];
+                        String r2 = partes[5];
+                        String r3 = partes[6];
+                        String r4 = partes[7];
+                        caller.printPergunta(question, r1, r2, r3, r4, level);
                     }
                 }
                 
@@ -60,6 +75,7 @@ public class TCPClientHandler extends Thread {
                         
                         JOptionPane.showMessageDialog(null, "O outro jogador foi desconectado! Jogo encerrado!", "Aviso!", JOptionPane.INFORMATION_MESSAGE);
                         caller.resetLayout();
+                        caller.closeConnection(true);
                     }
                 }
                 
