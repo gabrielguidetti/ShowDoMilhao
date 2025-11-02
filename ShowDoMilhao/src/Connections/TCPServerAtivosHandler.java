@@ -64,7 +64,7 @@ public class TCPServerAtivosHandler extends Thread {
                             this.main.getGm().setP1Id(Integer.parseInt(parameter));
                         } else {
                             this.main.getGm().setP2Id(Integer.parseInt(parameter));
-                            this.main.sendTurns();
+                            this.main.sendTurns("XXX");
                         }
                     }
                 }
@@ -77,21 +77,37 @@ public class TCPServerAtivosHandler extends Thread {
                         this.main.sendMessageToOtherPlayer(playerId, "SYSTEM|OtherPlayerDisconnect");
                         this.main.getGm().resetGameMatch();
                         caller.addMessageLog("Jogo reiniciado!");
+                        if(this.main.getTimer() != null) {
+                            this.main.getTimer().stop();
+                        }
                     }
                 }
                 
                 if (tipo.equalsIgnoreCase("TURN")) {
                     if(conteudo.equalsIgnoreCase("PlayerResponse")) {
                         String response = partes.length > 2 ? partes[2] : "";
-                        caller.addMessageLog("Respsota dada pelo jogador: " + response);
+                        caller.addMessageLog("Resposta dada pelo jogador playerId: " + this.cliente.getPlayerId() + ": " + response);
                         
                         Resposta correctResponse = this.main.getGm().getActualQuestion().getRespostas().stream().filter(x -> x.isCorreta()).findFirst().orElse(null);
                         
                         if(correctResponse != null) {
                             if(correctResponse.getTexto().equals(response)) {
-                                caller.addMessageLog("Jogador ACERTOU!");
+                                caller.addMessageLog("Jogador playerId: " + this.cliente.getPlayerId() + " ACERTOU!");
+                                this.main.getGm().addLevelToActualPlayer();
+                                if(this.main.getGm().getActualLevel() >= 8) {
+                                    caller.addMessageLog("Jogador playerId: " + this.cliente.getPlayerId() + " VENCEU O JOGO!");
+                                    this.main.sendMessageToPlayer(this.cliente.getPlayerId(), "GAMERULE|Finish|Win");
+                                    this.main.sendMessageToOtherPlayer(this.cliente.getPlayerId(), "GAMERULE|Finish|Lose");
+                                    
+                                    if(this.main.getTimer() != null) {
+                                        this.main.getTimer().stop();
+                                    }
+                                } else {
+                                    this.main.sendTurns("Você acertou!");
+                                }
                             } else {
-                                caller.addMessageLog("Jogador ERROU!");
+                                caller.addMessageLog("Jogador playerId: " + this.cliente.getPlayerId() + " ERROU!");
+                                this.main.sendTurns("Você errou!");
                             }
                             
                             if(this.main.getTimer() != null) {

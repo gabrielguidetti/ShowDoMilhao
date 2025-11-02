@@ -39,7 +39,7 @@ public class TCPServerAtivosMain extends Thread {
         return timer;
     }
     
-    public void sendTurns() {
+    public void sendTurns(String situation) {
         Turn turn = gm.getTurn();
         String message = "TURN|ShowQuestion|" + turn.getPergunta().getPergunta() + "|" + turn.getPergunta().getNivel();
         
@@ -48,7 +48,7 @@ public class TCPServerAtivosMain extends Thread {
         }
         
         sendMessageToPlayer(turn.getPlayerId(), message);
-        sendMessageToOtherPlayer(turn.getPlayerId(), "GAMERULE|WaitOpponent");
+        sendMessageToOtherPlayer(turn.getPlayerId(), "GAMERULE|WaitOpponent|" + situation);
         caller.addMessageLog("Pergunta enviada para playerId: " + turn.getPlayerId() + ", o outro jogador está aguardando!");
         startTurnTimer();
     }
@@ -63,6 +63,7 @@ public class TCPServerAtivosMain extends Thread {
                 
                 if (tempo <= 0) {
                     timer.stop();
+                    sendTurns("O tempo esgotou!");
                 }
             }
         });

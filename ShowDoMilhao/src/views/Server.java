@@ -2,22 +2,19 @@ package views;
 
 import Connections.TCPServerAtivosMain;
 import java.io.IOException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import javax.swing.JOptionPane;
 
 public class Server extends javax.swing.JFrame {
 
-    public int x;
-    public int y;
-    public int d;
-    public int s;
+    DateTimeFormatter formatter;
     
     
     public Server() {
         initComponents();
         this.setLocationRelativeTo(null); 
-        x = y = 0;
-        d = 5;
-        s = 20;
+        formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
     }
 
     /**
@@ -135,7 +132,11 @@ public class Server extends javax.swing.JFrame {
     }//GEN-LAST:event_btnIniciarActionPerformed
 
     public void addMessageLog(String mensagem) {
-        txtAreaLog.append(mensagem + "\n");
+        LocalDateTime currentDateTime = LocalDateTime.now();
+
+        String formattedDateTime = currentDateTime.format(formatter);
+        txtAreaLog.append("[" + formattedDateTime + "] " + mensagem + "\n");
+        txtAreaLog.setCaretPosition(txtAreaLog.getDocument().getLength());
     }
 
     private void btnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairActionPerformed

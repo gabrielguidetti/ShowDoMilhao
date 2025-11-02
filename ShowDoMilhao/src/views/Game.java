@@ -11,7 +11,6 @@ import java.awt.event.ActionListener;
 import java.io.IOException;
 import javax.swing.JOptionPane;
 import javax.swing.Timer;
-import models.Pergunta;
 
 /**
  *
@@ -37,12 +36,40 @@ public class Game extends javax.swing.JFrame {
         return timer;
     }
     
-    public void setWaitOpponent() {
+    public void setWaitOpponent(String situation) {
         jLabelNivel.setText("Nível:");
         jLabelNivelNumero.setText("0");
         jLabelTempo.setText("Tempo:");
         jLabelTempoNumero.setText("30");
-        jLabelPergunta.setText("Vez do oponente! Fique esperto!");
+        
+        if(situation.equals("XXX")) {
+            jLabelPergunta.setText("Vez do oponente! Fique esperto!");
+        } else {
+            jLabelPergunta.setText(situation + " Vez do oponente! Fique esperto!");
+        }
+        
+        jButtonRespostaA.setText("");
+        jButtonRespostaA.setEnabled(false);
+        jButtonRespostaB.setText("");
+        jButtonRespostaB.setEnabled(false);
+        jButtonRespostaC.setText("");
+        jButtonRespostaC.setEnabled(false);
+        jButtonRespostaD.setText("");
+        jButtonRespostaD.setEnabled(false);
+    }
+    
+    public void finishLayout(String situation) {
+        jLabelNivel.setText("Nível:");
+        jLabelNivelNumero.setText("0");
+        jLabelTempo.setText("Tempo:");
+        jLabelTempoNumero.setText("30");
+        
+        if(situation.equals("Win")) {
+            jLabelPergunta.setText("VOCÊ VENCEU!!");
+        } else {
+            jLabelPergunta.setText("Você perdeu!");
+        }
+        
         jButtonRespostaA.setText("");
         jButtonRespostaA.setEnabled(false);
         jButtonRespostaB.setText("");

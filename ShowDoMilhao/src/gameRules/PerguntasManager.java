@@ -35,17 +35,18 @@ public class PerguntasManager {
         if(perguntasNivelAtual == null || perguntasNivelAtual.getFirst().getNivel() != nivel) {
             perguntasNivelAtual = new ArrayList<>(perguntas.stream().filter(x -> x.getNivel() == nivel).toList());
             Collections.shuffle(perguntasNivelAtual);
-            
+
             for(Pergunta p : perguntasNivelAtual) {
                 List<Resposta> temp = new ArrayList<>(p.getRespostas());
                 Collections.shuffle(temp);
                 p.setRespostas(temp);
             }
         }
-        
-        if(indexPergunta > 9)
+
+        if(indexPergunta > (perguntasNivelAtual.size()-1)) {
             indexPergunta = 0;
-        
+        }
+
         Pergunta result = perguntasNivelAtual.get(indexPergunta);
         indexPergunta++;
         return result;

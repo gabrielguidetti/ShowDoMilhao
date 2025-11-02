@@ -41,6 +41,10 @@ public class GameMatch {
         return actualQuestion;
     }
     
+    public int getTurnNumber() {
+        return turn;
+    }
+    
     public Turn getTurn() {
         Turn result;
         if(turn == 1) {
@@ -54,6 +58,27 @@ public class GameMatch {
         }
         
         return result;
+    }
+    
+    public int getActualLevel() {
+        if(turn == 2) { //turnos invertidos pois o turno é trocado na função de cima
+            return levelP1;
+        } else {
+            return levelP2;
+        }
+    }
+    
+    public void addLevelToActualPlayer() {
+        if(turn == 2) { //turnos invertidos pois o turno é trocado na função de cima
+            if(levelP1 < 8) {
+                levelP1++;
+            }
+            
+        } else if (turn == 1) {
+            if(levelP2 < 8) {
+                levelP2++;
+            }
+        }
     }
     
     public void resetGameMatch() {

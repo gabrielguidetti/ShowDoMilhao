@@ -51,7 +51,13 @@ public class TCPClientHandler extends Thread {
                     }
                     
                     if(conteudo.equalsIgnoreCase("WaitOpponent")) {
-                        caller.setWaitOpponent();
+                        String situation = partes[2];
+                        caller.setWaitOpponent(situation);
+                    }
+                    
+                    if(conteudo.equalsIgnoreCase("Finish")) {
+                        String situation = partes[2];
+                        caller.finishLayout(situation);
                     }
                 }
                 
