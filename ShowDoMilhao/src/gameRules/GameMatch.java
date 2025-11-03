@@ -11,6 +11,8 @@ public class GameMatch {
     private int turn;
     private PerguntasManager pm;
     private Pergunta actualQuestion;
+    private boolean drawP1;
+    private boolean drawP2;
     
     public GameMatch() {
         p1Id = 0;
@@ -19,6 +21,8 @@ public class GameMatch {
         pm = new PerguntasManager();
         levelP1 = 1;
         levelP2 = 1;
+        drawP1 = false;
+        drawP2 = false;
     }
 
     public void setP1Id(int p1Id) {
@@ -88,5 +92,21 @@ public class GameMatch {
         pm = new PerguntasManager();
         levelP1 = 1;
         levelP2 = 1;
+    }
+    
+    public int confirmWin() {
+        if(levelP1 == 8 && turn == 1 && levelP2 < 8) {
+            return p1Id;
+        }
+        
+        if(levelP2 == 8 && turn == 1 && levelP1 < 8) {
+            return p2Id;
+        }
+        
+        return 0;
+    }
+    
+    public boolean isTied() {
+        return levelP1 == 8 && levelP2 == 8;
     }
 }

@@ -93,16 +93,26 @@ public class TCPServerAtivosHandler extends Thread {
                         if(correctResponse != null) {
                             if(correctResponse.getTexto().equals(response)) {
                                 caller.addMessageLog("Jogador playerId: " + this.cliente.getPlayerId() + " ACERTOU!");
-                                this.main.getGm().addLevelToActualPlayer();
-                                if(this.main.getGm().getActualLevel() >= 8) {
-                                    caller.addMessageLog("Jogador playerId: " + this.cliente.getPlayerId() + " VENCEU O JOGO!");
-                                    this.main.sendMessageToPlayer(this.cliente.getPlayerId(), "GAMERULE|Finish|Win");
-                                    this.main.sendMessageToOtherPlayer(this.cliente.getPlayerId(), "GAMERULE|Finish|Lose");
+                                
+                                int playerWin = this.main.getGm().confirmWin();
+                                
+                                if(playerWin != 0) {
+                                    caller.addMessageLog("Jogador playerId: " + playerWin + " VENCEU O JOGO!");
+                                    this.main.sendMessageToPlayer(playerWin, "GAMERULE|Finish|Win");
+                                    this.main.sendMessageToOtherPlayer(playerWin, "GAMERULE|Finish|Lose");
                                     
+                                    System.out.println("AQUI : " + this.main.getTimer());
                                     if(this.main.getTimer() != null) {
-                                        this.main.getTimer().stop();
+                                        this.main.setTimer(null);
                                     }
                                 } else {
+                                    if(this.main.getGm().isTied()) {
+                                        //AAAAAAAAAAAAA
+                                    } else {
+                                        if(this.main.getGm().getActualLevel() < 8) {
+                                            this.main.getGm().addLevelToActualPlayer();
+                                        }
+                                    }
                                     this.main.sendTurns("Você acertou!");
                                 }
                             } else {

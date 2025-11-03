@@ -52,6 +52,10 @@ public class TCPServerAtivosMain extends Thread {
         caller.addMessageLog("Pergunta enviada para playerId: " + turn.getPlayerId() + ", o outro jogador está aguardando!");
         startTurnTimer();
     }
+
+    public void setTimer(Timer timer) {
+        this.timer = timer;
+    }
     
     private void startTurnTimer() {
         tempo = 31;
@@ -62,8 +66,10 @@ public class TCPServerAtivosMain extends Thread {
                 caller.addMessageLog("TEMPO RESTANTE PARA RESPOSTA: " + tempo + " SEGUNDOS!");
                 
                 if (tempo <= 0) {
-                    timer.stop();
-                    sendTurns("O tempo esgotou!");
+                    if(timer != null) {
+                        timer.stop();
+                        sendTurns("O tempo esgotou!");
+                    }
                 }
             }
         });
