@@ -13,6 +13,9 @@ public class GameMatch {
     private Pergunta actualQuestion;
     private boolean drawP1;
     private boolean drawP2;
+    private boolean finishP1;
+    private boolean finishP2;
+    private boolean firstDraw;
     
     public GameMatch() {
         p1Id = 0;
@@ -23,6 +26,17 @@ public class GameMatch {
         levelP2 = 1;
         drawP1 = false;
         drawP2 = false;
+        finishP1 = false;
+        finishP2 = false;
+        firstDraw = true;
+    }
+
+    public boolean isFirstDraw() {
+        return firstDraw;
+    }
+
+    public void setFirstDraw(boolean firstDraw) {
+        this.firstDraw = firstDraw;
     }
 
     public void setP1Id(int p1Id) {
@@ -37,8 +51,40 @@ public class GameMatch {
         return p1Id;
     }
 
+    public boolean isFinishP1() {
+        return finishP1;
+    }
+
+    public void setFinishP1(boolean finishP1) {
+        this.finishP1 = finishP1;
+    }
+
+    public boolean isFinishP2() {
+        return finishP2;
+    }
+
+    public void setFinishP2(boolean finishP2) {
+        this.finishP2 = finishP2;
+    }
+
     public int getP2Id() {
         return p2Id;
+    }
+
+    public void setDrawP1(boolean drawP1) {
+        this.drawP1 = drawP1;
+    }
+
+    public void setDrawP2(boolean drawP2) {
+        this.drawP2 = drawP2;
+    }
+
+    public boolean isDrawP1() {
+        return drawP1;
+    }
+
+    public boolean isDrawP2() {
+        return drawP2;
     }
 
     public Pergunta getActualQuestion() {
@@ -50,8 +96,8 @@ public class GameMatch {
     }
     
     public Turn getTurn() {
-        Turn result;
-        if(turn == 1) {
+        Turn result;   
+        if(turn == 1) {  
             actualQuestion = pm.getPerguntasByNivel(levelP1);
             result = new Turn(p1Id, actualQuestion);
             turn = 2;
@@ -72,6 +118,16 @@ public class GameMatch {
         }
     }
     
+    public void setFinishToActualPlayer() {
+        if(turn == 2) { //turnos invertidos pois o turno é trocado na função de cima
+            System.out.println("SETADO FINISH PLAYER 1");
+            finishP1 = true;
+        } else {
+            System.out.println("SETADO FINISH PLAYER 2");
+            finishP2 = true;
+        }
+    }
+    
     public void addLevelToActualPlayer() {
         if(turn == 2) { //turnos invertidos pois o turno é trocado na função de cima
             if(levelP1 < 8) {
@@ -85,6 +141,14 @@ public class GameMatch {
         }
     }
     
+    public void addDrawToActualPlayer() {
+        if(turn == 2) { //turnos invertidos pois o turno é trocado na função de cima
+            drawP1 = true;
+        } else if (turn == 1) {
+            drawP2 = true;
+        }
+    }
+    
     public void resetGameMatch() {
         p1Id = 0;
         p2Id = 0;
@@ -95,11 +159,11 @@ public class GameMatch {
     }
     
     public int confirmWin() {
-        if(levelP1 == 8 && turn == 1 && levelP2 < 8) {
+        if(finishP1 && turn == 1 && !finishP2) {
             return p1Id;
         }
         
-        if(levelP2 == 8 && turn == 1 && levelP1 < 8) {
+        if(finishP2 && turn == 1 && !finishP1) {
             return p2Id;
         }
         
@@ -107,6 +171,6 @@ public class GameMatch {
     }
     
     public boolean isTied() {
-        return levelP1 == 8 && levelP2 == 8;
+        return finishP1 && finishP2;
     }
 }
