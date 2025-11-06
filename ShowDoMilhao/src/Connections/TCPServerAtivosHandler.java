@@ -114,17 +114,13 @@ public class TCPServerAtivosHandler extends Thread {
                                     }
                                 } else {
                                     if(this.main.getGm().isTied()) {
-                                        System.out.println("DEBUG1: ESTÁ EMPATADO!");
                                         if(this.main.getGm().isFirstDraw()) {
-                                            System.out.println("DEBUG2: TIROU FIRST DRAW");
                                             this.main.getGm().setFirstDraw(false);
                                         } else {
-                                            System.out.println("DEBUG3: adicionou first drawn");
                                             this.main.getGm().addDrawToActualPlayer();
                                         }
                                         
                                         if(this.main.getGm().isDrawP1() && this.main.getGm().isDrawP2() && this.main.getGm().getTurnNumber() == 1) {
-                                            System.out.println("DEBUG4: NOVO DESEMPATE");
                                             this.main.getGm().setDrawP1(false);
                                             this.main.getGm().setDrawP2(false);
                                         } else if(!this.main.getGm().isDrawP1() && this.main.getGm().isDrawP2() && this.main.getGm().getTurnNumber() == 1) {
@@ -145,8 +141,25 @@ public class TCPServerAtivosHandler extends Thread {
                                     this.main.sendTurns("Você acertou!");
                                 }
                             } else {
-                                // FAZER DESEMPATE DE DERROTA SEPARADO
                                 caller.addMessageLog("Jogador playerId: " + this.cliente.getPlayerId() + " ERROU!");
+                                
+                                if(this.main.getGm().isDrawP1() && this.main.getGm().isDrawP2() && this.main.getGm().getTurnNumber() == 1) {
+                                    this.main.getGm().setDrawP1(false);
+                                    this.main.getGm().setDrawP2(false);
+                                } else if(!this.main.getGm().isDrawP1() && this.main.getGm().isDrawP2() && this.main.getGm().getTurnNumber() == 1) {
+                                    //player 2 win
+                                    caller.addMessageLog("Jogador playerId: " + this.main.getGm().getP2Id() + " VENCEU O JOGO!");
+                                    this.main.sendMessageToPlayer(this.main.getGm().getP2Id(), "GAMERULE|Finish|Win");
+                                    this.main.sendMessageToOtherPlayer(this.main.getGm().getP2Id(), "GAMERULE|Finish|Lose");
+                                    return;
+                                } else if(this.main.getGm().isDrawP1() && !this.main.getGm().isDrawP2() && this.main.getGm().getTurnNumber() == 1) {
+                                    //player 1 win
+                                    caller.addMessageLog("Jogador playerId: " + this.main.getGm().getP1Id() + " VENCEU O JOGO!");
+                                    this.main.sendMessageToPlayer(this.main.getGm().getP1Id(), "GAMERULE|Finish|Win");
+                                    this.main.sendMessageToOtherPlayer(this.main.getGm().getP1Id(), "GAMERULE|Finish|Lose");
+                                    return;
+                                }
+                                
                                 this.main.sendTurns("Você errou!");
                             }
                             
