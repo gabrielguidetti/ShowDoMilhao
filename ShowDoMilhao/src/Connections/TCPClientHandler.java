@@ -59,6 +59,16 @@ public class TCPClientHandler extends Thread {
                         String situation = partes[2];
                         caller.finishLayout(situation);
                     }
+                    
+                    if(conteudo.equalsIgnoreCase("ProgressLevelYou")) {
+                        int level = Integer.parseInt(partes[2]);
+                        caller.setProgressBarYou(level);
+                    }
+                    
+                    if(conteudo.equalsIgnoreCase("ProgressLevelEnemy")) {
+                        int level = Integer.parseInt(partes[2]);
+                        caller.setProgressBarEnemy(level);
+                    }
                 }
                 
                 if (tipo.equalsIgnoreCase("TURN")) {

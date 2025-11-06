@@ -95,6 +95,8 @@ public class TCPServerAtivosHandler extends Thread {
                                 caller.addMessageLog("Jogador playerId: " + this.cliente.getPlayerId() + " ACERTOU!");
                                 
                                 if(!this.main.getGm().isTied()) {
+                                    this.main.sendMessageToPlayer(cliente.getPlayerId(), "GAMERULE|ProgressLevelYou|" + this.main.getGm().getActualLevel());
+                                    this.main.sendMessageToOtherPlayer(cliente.getPlayerId(), "GAMERULE|ProgressLevelEnemy|" + this.main.getGm().getActualLevel());
                                     if(this.main.getGm().getActualLevel() < 8) {
                                         this.main.getGm().addLevelToActualPlayer();
                                     } else if(this.main.getGm().getActualLevel() == 8) {
