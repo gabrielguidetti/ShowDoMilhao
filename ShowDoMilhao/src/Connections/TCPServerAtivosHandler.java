@@ -145,6 +145,20 @@ public class TCPServerAtivosHandler extends Thread {
                             } else {
                                 caller.addMessageLog("Jogador playerId: " + this.cliente.getPlayerId() + " ERROU!");
                                 
+                                int playerWin = this.main.getGm().confirmWin();
+                                
+                                if(playerWin != 0) {
+                                    caller.addMessageLog("Jogador playerId: " + playerWin + " VENCEU O JOGO!");
+                                    this.main.sendMessageToPlayer(playerWin, "GAMERULE|Finish|Win");
+                                    this.main.sendMessageToOtherPlayer(playerWin, "GAMERULE|Finish|Lose");
+                                    
+                                    if(this.main.getTimer() != null) {
+                                        this.main.setTimer(null);
+                                    }
+                                    
+                                    return;
+                                }
+                                
                                 if(this.main.getGm().isDrawP1() && this.main.getGm().isDrawP2() && this.main.getGm().getTurnNumber() == 1) {
                                     this.main.getGm().setDrawP1(false);
                                     this.main.getGm().setDrawP2(false);
